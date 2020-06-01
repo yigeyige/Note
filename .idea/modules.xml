@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Apache_note/Apache_note.iml" filepath="$PROJECT_DIR$/Apache_note/Apache_note.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Git_note/Git_note.iml" filepath="$PROJECT_DIR$/Git_note/Git_note.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Idea_note/Idea_note.iml" filepath="$PROJECT_DIR$/Idea_note/Idea_note.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Java_note/Java_note.iml" filepath="$PROJECT_DIR$/Java_note/Java_note.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Linux_note/Linux_note.iml" filepath="$PROJECT_DIR$/Linux_note/Linux_note.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Mybatis_note/Mybatis_note.iml" filepath="$PROJECT_DIR$/Mybatis_note/Mybatis_note.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Oracle_note/Oracle_note.iml" filepath="$PROJECT_DIR$/Oracle_note/Oracle_note.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Project_backup/Project_backup.iml" filepath="$PROJECT_DIR$/Project_backup/Project_backup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Redis_note/Redis_note.iml" filepath="$PROJECT_DIR$/Redis_note/Redis_note.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Markdown_note/markdown_note.iml" filepath="$PROJECT_DIR$/Markdown_note/markdown_note.iml" />
+    </modules>
+  </component>
+</project>
