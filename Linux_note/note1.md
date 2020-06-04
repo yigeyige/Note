@@ -37,3 +37,15 @@
         cd /proc/PID号
         sudo ls -ail
         ```
+4. 操作系统  
+    + 查看操作系统版本  
+        ```shell script 
+        cat /etc/issue
+        cat /etc/redhat-release
+        ```
+      
+5. 软件应用命令  
+    + Apache  
+        ```shell script
+        sudo ./APACHE_BASE/bin/httpd -v
+        ```
