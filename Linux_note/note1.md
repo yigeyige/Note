@@ -21,7 +21,7 @@
             unzip file.zip
             ```
         
-2. SSH  
+2. SSH/SSL  
     + 查看ssh版本  
         ```shell script
         ssh -V
@@ -30,6 +30,11 @@
         ```shell script
         nmap --script ssh2-enum-algos -sV -p 22 10.0.97.221
         ```
+    + 查看ssl版本  
+        * CentOS查看  
+            ```shell script
+            openssl version
+            ```
 
 3. PID
     + 查看进程所在目录
