@@ -16,7 +16,7 @@
         * 加上`&`号使redis以后台程序方式运行  
             ```shell
             sudo ./redis-server &
-            sudo ./redis-server ../redis.conf &
+            sudo ./redis-server ../redis.conf &  
             ```
     + 启动客户端 用于本机测试   
         ```shell
