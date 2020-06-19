@@ -21,7 +21,7 @@
             ```
         + 启动客户端 用于本机测试   
             ```shell
-            redis-cli -h 127.0.0.1 -p 6379 -a EmsCache2020
+            ./redis-cli -h 127.0.0.1 -p 6379 -a EmsCache2020
             127.0.0.1:6379> config get requirepass
             ```
     + 1.3 卸载  

@@ -77,3 +77,9 @@
         
         chore：构建过程或辅助工具的变动
         ```
+      
+8. 版本撤销 
+    + 撤销指定的提交   
+        ```shell script
+        git revert commit_id
+        ```
