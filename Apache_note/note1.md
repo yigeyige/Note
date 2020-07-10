@@ -115,4 +115,16 @@
         ThreadsPerChild         25
         MaxRequestWorkers     2000
         MaxConnectionsPerChild 100
+      
+        StartServers              3
+        MinSpareThreads          25
+        MaxSpareThreads          75 
+        ThreadsPerChild          25
+        MaxRequestWorkers       400
+        MaxConnectionsPerChild 5000
         ```
+      
+3. 查看当前连接apache的线程数
+    ```shell script
+    ps -eLf|grep httpd|wc -l
+    ```

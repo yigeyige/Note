@@ -42,6 +42,7 @@
         cd /proc/PID号
         sudo ls -ail
         ```
+      
 4. 操作系统  
     + 4.1 查看操作系统版本  
         ```shell script 
@@ -132,4 +133,6 @@
             ```shell script
             sudo ./APACHE_BASE/bin/httpd -v
             ```
+    
+6. 查找命令  
     

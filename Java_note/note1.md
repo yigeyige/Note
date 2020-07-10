@@ -15,6 +15,11 @@
               from table_a a,table_b b
              where a.id = b.id;
             ```
+          
+        + 延迟加载  
+            [Hibernate延迟加载](https://www.cnblogs.com/chenmingjun/p/9747681.html)
+            
+            
     * Struts2  
     
     * Spring  
