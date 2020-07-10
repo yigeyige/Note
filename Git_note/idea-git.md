@@ -1,4 +1,6 @@
-#**Idea-git*
+#**Idea-git**
+**author: YIGe**  
+**date: 2020/7/10 15:28**  
 
 1. idea上传git  
     + 1.1 新建远程仓库  
