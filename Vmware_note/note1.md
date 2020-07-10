@@ -1,5 +1,5 @@
-#**Vmware虚拟机**
-**author: YIGe**  
+#**Vmware虚拟机**  
+**author: YIGe**   
 **date: 2020/7/10 15:28**  
 
 1. 安装Vmware虚拟机  
