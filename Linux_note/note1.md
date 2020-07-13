@@ -124,7 +124,7 @@
             S.5....T c /app/apache/conf/apache.conf
             ```    
           
-        * 附件命令  
+        * 附命令  
             --force 强制操作，如强制安装卸载删除等  
             --nodeps 忽略依赖关系并继续操作  
             --requires 显示该包的依赖关系                                    
@@ -136,5 +136,15 @@
             sudo ./APACHE_BASE/bin/httpd -v
             ```
     
-6. 查找命令  
+6. top命令  
+    [TOP命令各参数详解](https://www.cnblogs.com/sbaicl/articles/2752068.html)  
+    CPU:  
+    us 用户空间占用CPU百分比  
+    sy 内核空间占用CPU百分比  
+    ni 用户进程空间改变过优先级的进程占用CPU百分比  
+    id 空闲CPU百分比  
+    wa 等待输入输出的CPU时间百分比    
+    hi CPU服务硬中断的时间百分比  
+    si CPU服务软中断的时间百分比  
+     
     
