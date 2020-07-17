@@ -25,5 +25,16 @@
     * Struts2  
     
     * Spring  
-2.     
+2.  Java 参数 null传递  
+    基本类型  
+    基本类型的包装类  
+    Java的数据类型分为两种：
+    1、基本类型：byte(8),short(16),int(32),long(64),float(32),double(64),char(16),boolean(1)
+    2、对象类型：Byte,Short,Integer,Long,Float,Double,Character,Boolean    
+    [Java 参数传递 空对象 null](https://blog.csdn.net/mantoureganmian/article/details/49685309)  
+    当参数为基本类型时，值传递一个null时，参数强制转换类型就会报空指针异常。  
+    [参数传递](./image/参数传递.png)  
+
+3. StringBuffer&StringBuilder  
+    
   
