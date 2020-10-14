@@ -1,0 +1,73 @@
+--初始密码：jlGbbi-aq1yn
+--修改后密码：123456
+
+下载地址：
+
+mysql-windows安装步骤:
+1.将zip解压到相关目录下
+2.在对应MySQL目录下创建my.ini配置文件
+--------------------------------------------------------------------------------------------
+[mysql]
+# 设置mysql客户端默认字符集
+default-character-set=utf8
+ 
+[mysqld]
+# 设置3306端口
+port = 3306
+# 设置mysql的安装目录
+basedir=C:\\web\\mysql-8.0.11
+# 设置 mysql数据库的数据的存放目录，MySQL 8+ 不需要以下配置，系统自己生成即可，否则有可能报错
+# datadir=C:\\web\\sqldata
+# 允许最大连接数
+max_connections=20
+# 服务端使用的字符集默认为8比特编码的latin1字符集
+character-set-server=utf8
+# 创建新表时将使用的默认存储引擎
+default-storage-engine=INNODB
+---------------------------------------------------------------------------------------
+3. 管理员身份运行命令行：
+#切换至目录
+cd C:\web\mysql-8.0.11\bin
+#初始化数据库
+mysqld --initialize --console
+本命令输出结果root初始密码用于后续登陆：[Server] A temporary password is generated for root@localhost: ,3qm7S.A9=MQ
+#安装
+mysqld install
+#启动数据库服务mysql
+net start mysql
+#登陆mysql-root用户
+mysql -u root -p
+Enter password:APWCY5ws&hjQ
+--->>修改root密码：mysqladmin -u root -p password 123456
+--->>修改root密码：Enter password:APWCY5ws&hjQ
+进入mysql命令行
+#显示数据库
+>show databases;
+#创建数据库
+>CREATE DATABASE db_yige DEFAULT CHARSET utf8 COLLATE utf8_general_ci;
+ create schema hap_dev default character set utf8;
+ create schema hap_dev1 default character set utf8;
+#打开数据库
+>use hap_dev;
+#插入用户表
+>create user 'hap_dev'@'%' identified by 'hap_dev'; 
+ CREATE USER 'hap_dev'@'%'  IDENTIFIED BY 'hap_dev';   
+ CREATE USER 'user_yige_test'@'%'  IDENTIFIED BY 'wasd123';
+ CREATE USER hap_dev1@'%' IDENTIFIED BY 'hap_dev1';
+ CREATE USER hap_dev1@'localhost' IDENTIFIED BY 'hap_dev1';
+
+#授予权限 将db_yige数据库的权限授予user_yige_test
+>grant all privileges on db_yige.* to 'hap_dev'@'%';
+ grant all privileges on hap_dev.* to 'hap_dev'@'%';
+ grant all privileges on hap_dev1.* to 'hap_dev1'@'%';
+ 
+#刷新权限 
+>FLUSH PRIVILEGES;
+
+#登陆user_yige_test用户
+mysql -u 登陆user_yige_test用户 -p
+Enter password:wasd123
+#打开数据库
+>use db_yige;
+
+
