@@ -1,0 +1,8 @@
+执行msi安装文件，并按日志输出：
+msiexec /i D:\宝能项目\svn\软件\TortoiseSVN-1.11.0.28416-x64-svn-1.11.0.msi /l*v D:\msi.log
+
+修改命令行编码格式：
+  1.打开注册表
+  2.找到HKEY_CURRENT_USER→Console→Tomcat
+   （如果你改了tomcat的标题栏，这里就是你打开的命令窗口的名字），
+  3.找到CodePage项，没有则创建，更改值为十进制的65001，点击确定。

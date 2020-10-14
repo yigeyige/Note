@@ -7,8 +7,7 @@
         * 示例：将所有jpg打包  
             ```shell script
             tar -czf *.jpg.tar.gz *.jpg
-            ```
-            
+            ```  
     + 解压  
         * 示例1：解压tar包  
             ```shell script
@@ -37,33 +36,28 @@
             ```shell script
             openssl version
             ```
-
-3. PID
-    + 查看进程所在目录
-        ```shell script
-        cd /proc/PID号
-        sudo ls -ail
-        ```
-      
-4. 操作系统  
-    + 4.1 查看操作系统版本  
+     
+3. 操作系统  
+    + 3.1 查看操作系统版本  
         ```shell script 
         cat /etc/issue
         cat /etc/redhat-release
+        ```  
+    + 3.2 查看linux内核信息  
+        ```shell script
+        cat /proc/version
+        uname -a
         ```
-      
-    + 4.2 rpm命令(Redhat Package Manager)  
+    + 3.3 rpm命令(Redhat Package Manager)  
         * 查询操作 rpm -q   
             a 查询所有已经安装的包  
             ```shell script
             rpm -qa | grep mysql
-            ```  
-            
+            ```   
             i 查询安装包的信息
             ```shell script
             rpm -qip mysql.rpm
             ```  
-            
             l 显示安装包文件被安装的到哪些目录下  
             s 显示安装包中的所有文件状态被安装的到哪些目录下   
             p 查询的是安装包的信息   
@@ -72,13 +66,11 @@
             安装包  
             ```shell script
             rpm -i mysql.rpm
-            ```
-            
+            ```  
             安装包并显示正在安装的文件信息  
             ```shell script
             rpm -iv mysql.rpm
-            ```  
-          
+            ```   
             安装包并显示正在安装的文件信息以及安装进度  
             ```shell script
             rpm -ivh mysql.rpm
@@ -88,33 +80,27 @@
             ```shell script
             rpm -e mysql
             ```   
-          
             卸载软件包并显示卸载的文件信息以及卸载进度  
             ```shell script
             rpm -evh mysql
-            ```   
-          
+            ```    
         * 升级操作 rpm -U  
             升级包  
             ```shell script
             rpm -U mysql.rpm
-            ```                                    
-            
+            ```   
             升级包并显示升级的文件信息以及升级进度  
             ```shell script
             rpm -Uvh mysql.rpm
-            ```   
-          
+            ```    
         * 验证操作 rpm -V  
             验证软件包是通过比较已安装的文件和软件包中的原始文件信息来进行的。  
             验证主要是比较文件的尺寸，MD5 校验码，文件权限，类型，属主和用户组等。  
-            如果有错误信息输出，您应当认真加以考虑，是通过删除还是重新安装来解决出现的问题。  
-            
+            如果有错误信息输出，您应当认真加以考虑，是通过删除还是重新安装来解决出现的问题。   
             验证包  
             ```shell script
             rpm -V mysql.rpm
-            ```  
-            
+            ```   
             示例：
             ```shell script  
             rpm -Vf /app/apache/conf/apache.conf
@@ -123,12 +109,23 @@
             ```shell script  
             S.5....T c /app/apache/conf/apache.conf
             ```    
-          
         * 附命令  
             --force 强制操作，如强制安装卸载删除等  
             --nodeps 忽略依赖关系并继续操作  
-            --requires 显示该包的依赖关系                                    
+            --requires 显示该包的依赖关系    
+    + 3.4 root创建用户  
+        ```shell script
+        useradd -d /usr/prod -m prod 
+        passwd prod 
       
+        groupsadd prodGroup 
+        usermod -a -G prodGroup prod
+        ```      
+    + 3.5 重新加载系统配置文件  
+        ```shell script
+        source /etc/profile
+        ```                
+    
 5. 软件应用命令  
     + Apache  
         * 查看版本   
@@ -146,5 +143,108 @@
     wa 等待输入输出的CPU时间百分比    
     hi CPU服务硬中断的时间百分比  
     si CPU服务软中断的时间百分比  
-     
     
+7. 切换文件所有者  
+    + 将当前目录名下title文件夹极其子文件的所有者改为guest组下的dev用户
+        ```shell script
+        chown -R su.guest title
+        ```  
+    + root创建title文件 切换给其他用户用户组  
+        ```shell script
+        chown prod title
+        chgrp prodGroup title
+        ```
+   
+8. 查看命令  
+    + 查看文件或者目录大小  
+        ```shell script
+        ls -lht
+        df -h
+        du -h --max-depth=1 /home/prod/web   
+        du -sh /home/prod/web
+        ```  
+    + 查看服务器打开文件数量以及其他数据  
+        ```shell script
+        ulimit -a
+        ```   
+    + 查看线程数  
+        * 查看某进程的线程数  
+            ```shell script
+            ps -Lf pid|wc -l 
+            ```       
+        * 查看某进程数   
+            ```shell script
+            ps -eLf|grep java|wc -l
+            ```   
+    + 查看网络连接  
+        * 查看网络连接状态以及数量  
+            需要拥有netstat命令权限
+            ```shell script
+            netstat -an | awk '/^tcp/ {++S[$NF]} END {for(a in S) print a, S[a]}'
+            ```  
+        * 查看网络已连接数量  
+            ```shell script
+            netstat -nat|grep ESTABLISHED|wc -l
+            ```
+    + 查看进程所在目录  
+        ```shell script
+        cd /proc/PID号
+        sudo ls -ail
+        ```    
+    + 查看端口对应进程  
+        ```shell script
+        netstat -tunlp | grep 8080
+        ```  
+    + 查看进程pid对应服务目录  
+        ```shell script
+        pwdx 7226
+        ```   
+    + 查看物理CPU个数  
+        ```shell script
+        cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l
+        ```  
+    + 查看每个物理CPU中core的个数(即核数) 主要使用这个  
+        ```shell script
+        cat /proc/cpuinfo| grep "cpu cores"| uniq
+        ```  
+    + 查看逻辑CPU个数  
+        ```shell script
+        cat /proc/cpuinfo| grep "processor"| wc -l
+        ```  
+9. 普通用户切换到root  
+    ```shell script
+    su root
+   
+    sudo su
+   
+    sudo sh
+    > bash
+    ```    
+   
+10. cron服务 类似计划任务  
+    + 执行命令   
+        要把cron设为在开机的时候自动启动，在 /etc/rc.d/rc.local 脚本中加入 /sbin/service crond start 即可.  
+        ```shell script
+        /sbin/service crond start
+        /sbin/service crond stop
+        /sbin/service crond restart
+        /sbin/service crond reload
+        ```   
+    + crontab配置  
+         * 查看当前用户的crontab  
+            ```shell script
+            crontab -l
+            ```
+         * 编辑crontab  
+            ```shell script
+            crontab -e
+            ```  
+         * 删除crontab  
+            ```shell script
+            crontab -r
+            ```  
+         * 查看crontab运行状态  
+            ```shell script
+            service crond status
+            ```
+        

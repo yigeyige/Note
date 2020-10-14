@@ -1,0 +1,237 @@
+Linux下的tar压缩解压缩命令详解(来源http://hi.baidu.com/feixia202023/blog/item/b54a243814ad87c1d4622502.html)
+
+tar
+-c: 建立压缩档案
+-x：解压
+-t：查看内容
+-r：向压缩归档文件末尾追加文件
+-u：更新原压缩包中的文件
+这五个是独立的命令，压缩解压都要用到其中一个，可以和别的命令连用但只能用其中一个。下面的参数是根据需要在压缩或解压档案时可选的。
+-z：有gzip属性的
+-j：有bz2属性的
+-Z：有compress属性的
+-v：显示所有过程
+-O：将文件解开到标准输出
+
+下面的参数-f是必须的
+-f: 使用档案名字，切记，这个参数是最后一个参数，后面只能接档案名。
+# tar -cf all.tar *.jpg 
+这条命令是将所有.jpg的文件打成一个名为all.tar的包。-c是表示产生新的包，-f指定包的文件名。 
+# tar -rf all.tar *.gif 
+这条命令是将所有.gif的文件增加到all.tar的包里面去。-r是表示增加文件的意思。 
+# tar -uf all.tar logo.gif 
+这条命令是更新原来tar包all.tar中logo.gif文件，-u是表示更新文件的意思。 
+# tar -tf all.tar 
+这条命令是列出all.tar包中所有文件，-t是列出文件的意思 
+# tar -xf all.tar 
+这条命令是解出all.tar包中所有文件，-t是解开的意思 
+
+压缩
+tar –cvf jpg.tar *.jpg //将目录里所有jpg文件打包成tar.jpg
+
+tar –czf jpg.tar.gz *.jpg   //将目录里所有jpg文件打包成jpg.tar后，并且将其用gzip压缩，生成一个gzip压缩过的包，命名为jpg.tar.gz
+
+tar –cjf jpg.tar.bz2 *.jpg //将目录里所有jpg文件打包成jpg.tar后，并且将其用bzip2压缩，生成一个bzip2压缩过的包，命名为jpg.tar.bz2
+
+tar –cZf jpg.tar.Z *.jpg   //将目录里所有jpg文件打包成jpg.tar后，并且将其用compress压缩，生成一个umcompress压缩过的包，命名为jpg.tar.Z
+
+rar a jpg.rar *.jpg //rar格式的压缩，需要先下载rar for linux
+
+zip jpg.zip *.jpg //zip格式的压缩，需要先下载zip for linux
+
+解压
+tar –xvf file.tar //解压 tar包
+
+tar -xzvf file.tar.gz //解压tar.gz
+tar zxvf /bbs.tar.zip -C /zzz/bbs  //解压到指定目录
+
+tar -xjvf file.tar.bz2   //解压 tar.bz2
+
+tar –xZvf file.tar.Z   //解压tar.Z
+
+unrar e file.rar //解压rar
+
+unzip file.zip //解压zip
+
+总结
+1、*.tar 用 tar –xvf 解压
+
+2、*.gz 用 gzip -d或者gunzip 解压
+
+3、*.tar.gz和*.tgz 用 tar –xzf 解压
+
+4、*.bz2 用 bzip2 -d或者用bunzip2 解压
+
+5、*.tar.bz2用tar –xjf 解压
+
+6、*.Z 用 uncompress 解压
+
+7、*.tar.Z 用tar –xZf 解压
+
+8、*.rar 用 unrar e解压
+
+9、*.zip 用 unzip 解压
+--------------------------------------------- 
+压缩解压缩 
+zip文件： 
+功能说明：压缩文件。 
+
+语　　法：zip [-AcdDfFghjJKlLmoqrSTuvVwXyz$][-b <工作目录>][-ll][-n <字尾字符串>][-t <日期时间>][-<压缩效率>][压缩文件][文件...][-i <范本样式>][-x <范本样式>] 
+
+补充说明：zip是个使用广泛的压缩程序，文件经它压缩后会另外产生具有".zip"扩展名的压缩文件。 
+
+参　　数： 
+-A 调整可执行的自动解压缩文件。 
+-b<工作目录> 指定暂时存放文件的目录。 
+
+-c 替每个被压缩的文件加上注释。 
+-d 从压缩文件内删除指定的文件。 
+-D 压缩文件内不建立目录名称。 
+-f 此参数的效果和指定"-u"参数类似，但不仅更新既有文件，如果某些文件原本不存在于压缩文件内，使用本参数会一并将其加入压缩文件中。 
+-F 尝试修复已损坏的压缩文件。 
+-g 将文件压缩后附加在既有的压缩文件之后，而非另行建立新的压缩文件。 
+-h 在线帮助。 
+-i<范本样式> 只压缩符合条件的文件。 
+-j 只保存文件名称及其内容，而不存放任何目录名称。 
+-J 删除压缩文件前面不必要的数据。 
+-k 使用MS-DOS兼容格式的文件名称。 
+-l 压缩文件时，把LF字符置换成LF+CR字符。 
+-ll 压缩文件时，把LF+CR字符置换成LF字符。 
+-L 显示版权信息。 
+-m 将文件压缩并加入压缩文件后，删除原始文件，即把文件移到压缩文件中。 
+-n<字尾字符串> 不压缩具有特定字尾字符串的文件。 
+-o 以压缩文件内拥有最新更改时间的文件为准，将压缩文件的更改时间设成和该文件相同。 
+-q 不显示指令执行过程。 
+-r 递归处理，将指定目录下的所有文件和子目录一并处理。 
+-S 包含系统和隐藏文件。 
+-t<日期时间> 把压缩文件的日期设成指定的日期。 
+-T 检查备份文件内的每个文件是否正确无误。 
+-u 更换较新的文件到压缩文件内。 
+-v 显示指令执行过程或显示版本信息。 
+-V 保存VMS操作系统的文件属性。 
+-w 在文件名称里假如版本编号，本参数仅在VMS操作系统下有效。 
+-x<范本样式> 压缩时排除符合条件的文件。 
+-X 不保存额外的文件属性。 
+-y 直接保存符号连接，而非该连接所指向的文件，本参数仅在UNIX之类的系统下有效。 
+-z 替压缩文件加上注释。 
+-$ 保存第一个被压缩文件所在磁盘的卷册名称。 
+-<压缩效率> 压缩效率是一个介于1-9的数值。 
+
+rar文件： 
+
+Rar 用法: rar ＜命令＞ -＜选项1＞ ....-＜选项N＞ ＜操作文档＞ ＜文件...＞ ＜@文件列表...＞ ＜解压路径＞ h/](J k!P x l"w:G v K q7i6v 
+
+　　通常rar命令由一个主命令加若干选项（可选）构成，操作文档为操作施加的.rar文件对象，文件或文件列表为对操作文档实现修饰的具体文件或目录（可选）。 
+
+　　Y0`-o r#V r n ~"p9f5N rar常用命令主要有: 
+
+　　1) a 添加文件到操作文档 举例rar a test.rar file1.txt 
+
+　　若test.rar文件不存在，则打包file1.txt文件成test.rar rar a test.rar file2.txt 若test.rar文件已经存在，则添加file2.txt文件到test.rar中(这样 test.rar中就有两个文件了）注，如果操作文档中已有某文件的一份拷贝，则a命令更新该文件 另，对目录也可以进行操作 eg. rar a test.rar dir1 。 
+
+　　2) e test.rar 注，用e解压的话，不仅原来的file1.txt和file2.txt被解压到当前目录，就连dir1里面的所有文件也被解压到当前目录下，不能保持压缩前的目录结构，如果想保持压缩前的目录结构，用x解压。 
+
+　　3) c 对操作文档添加说明注释 eg. rar c test.rar 
+
+　　（会出现Reading comment from stdin字样，然后输入一行或多行注释，以ctrl+d结束）。 
+
+　　4) cf 添加文件注释，类似上面的c，不过这个是对压缩文档中每个文件进行注释 cw 将文档注释写入文件 eg. rar cw test.rar comment.txt。 
+
+　　5) d 从文档中删除文件 eg. rar d test.rar file1.txt e 
+
+　　将文件解压到当前目录 eg. rar。 
+
+　　6) e test.rar 注，用e解压的话，不仅原来的file1.txt和file2.txt被解压到当前目录，就连dir1里面的所有文件也被解压到当前目录下，不能保持压缩前的目录结构，如果想保持压缩前的目录结构，用x解压。 
+
+　　7) r 修复文档 eg. rar r test.rar 
+
+　　当rar文件有问题时，可以尝试用该命令进行修复（鬼知道有多少用） 。 
+
+　　8) s 转换文档成自解压文档 eg. rar s test.rar 
+
+　　会生成一个test.sfx的可执行文档，运行它的效果就相当于rar x test.rar， 适合于向没有rar的用户传输文件。 
+
+　　9) t 检测文档 eg. rar t test.rar 
+
+　　检测test.rar的完整性。 
+
+　　10) k 锁定文档 eg. rar k test.rar 
+
+　　锁定文档后，该文档就无法进行任何更新操作了。 
+
+.Z文件： 
+命令： compress 
+格式： compress 选项 文件列表 
+功能： 用Lempel-ziv压缩方法来压缩文件或压缩标准输入 
+选项： -r 递归操作，如果指定目录变元，则压缩该目录及其子目录中的所有文件。 
+-c 将压缩数据返回标准输出，而缺省情况下为压缩文件时将压缩数据返回文件。 
+-v 显示每个文件夹的压缩百分比。 
+解释： 在用compress压缩文件时，将在原文件名之后加上扩展名.Z。如果不指定文件，则压缩标准输入，其结果返回标准输出。 
+实例： 目的：压缩/mnt/lgx/a1.doc文件 
+命令：＃compress /mnt/lgx/a1.doc 
+结果：压缩后生成a1.doc.Z文件。 
+
+命令： uncompress 
+格式： uncompress 选项 文件列表 
+功能： 解压缩用compress 程序压缩过的文件 
+选项： -c 它将压缩数据发往标准输出而不是改写旧的压缩文件 
+解释： 如果不指定文件，则解压缩标准输入。缺省-c时，为解压缩。 
+实例： 目的：解压缩/mnt/lgx/a1.doc.Z 
+命令：# uncompress /mnt/lgx/a1.doc.Z 
+
+.gz文件： 
+
+命令： gzip 
+格式： gzip 选项 文件目录列表 
+功能： 用Lempel-ziv编码压缩文件 
+选项： -c 压缩结果写入标准输出，原文件保持不变。缺省时gzip将原文件压缩为.gz文件，并删除原文件。 
+-v 输出处理信息。 
+-d 解压缩指定文件。 
+-t 测试压缩文件的完整性。 
+解释： 值得一提的是，gzip比compress压缩更加有效。 
+实例： 目的：压缩/mnt/lgx/a1.doc 
+命令：＃gzip -v /mnt/lgx/a1.doc 
+结果：产生a1.doc.gz的压缩文件 
+
+命令： gunzip 
+格式： gunzip 选项 文件列表 
+功能： 解压缩用gzip命令（以及compress和zip命令）压缩过的文件 
+选项： -c 将输出写入标准输出，原文件保持不变。缺省时，gunzip将压缩文件变成解压缩文件。 
+-l 列出压缩文件中的文件而不解压缩。 
+-r 递归解压缩，深入目录结构中，解压缩命令行变元所指定目录中的所有子目录内的文件。 
+实例： 目的：解压缩/mnt/lgx/a1.doc.gz 
+命令：＃gunzip /mnt/lgx/a1.doc.gz 
+
+.tar文件： 
+
+命令： tar 
+格式： tar 选项 文件目录列表 
+功能： 对文件目录进行打包备份 
+选项： -c 建立新的归档文件 
+-r 向归档文件末尾追加文件 
+-x 从归档文件中解出文件 
+-O 将文件解开到标准输出 
+-v 处理过程中输出相关信息 
+-f 对普通文件操作 
+-z 调用gzip来压缩归档文件，与-x联用时调用gzip完成解压缩 
+-Z 调用compress来压缩归档文件，与-x联用时调用compress完成解压缩 
+实例1： 目的：用tar打包一个目录下的文件 
+命令：＃tar -cvf /mnt/lgx/a1.doc 
+结果：产生一个以.tar为扩展名的打包文件 
+实例2： 目的：用tar解开打包文件 
+命令：＃tar -xvf /mnt/lgx/a1.doc.tar 
+附加说明：在通常情况下，tar打包与gzip（压缩）经常联合使用，效果更好。方法是： 
+首先用tar打包，如：＃tar -cvf /mnt/lgx/a1.doc （产生a1.doc.tar文件） 
+然后用gzip压缩a1.doc.tar文件，如：＃gzip /mnt/lgx/a1.doc.tar （产生a1.doc.tar.gz文件） 
+实例3： 目的：解压a1.doc.tar.gz文件 
+方法1： 
+＃gzip -dc /mnt/lgx/a1.doc.tar.gz （产生a1.doc.tar文件） 
+＃tar -xvf /mnt/lgx/a1.doc.tar （产生a1.doc文件） 
+这两次命令也可使用管道功能，把两个命令合二为一： 
+＃gzip -dc /mnt/lgx/a1.doc.tar.gz | tar -xvf 
+方法2：使用tar提供的自动调用gzip解压缩功能 
+＃tar -xzvf /mnt/lgx/a1.doc.tar.gz 
+经过tar打包后，也可用compress命令压缩（注：gzip比compress压缩更加有效），产生一个以.tar.Z的文件，在解包时，可先用 “uncompress 文件名”格式解压，然后用“tar -xvf 文件名”解包。也可直接调用“tar -Zxvf 文件名”解包。
+
+
+

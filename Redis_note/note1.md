@@ -63,6 +63,6 @@
 
     + 4.2 删除当前数据库的所有key  
         ```shell script
-        127.0.0.1:6379> flushadb
+        127.0.0.1:6379> flushdb
         ```        
        

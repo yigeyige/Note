@@ -41,5 +41,9 @@
     [参数传递](./image/参数传递.png)  
 
 3. StringBuffer&StringBuilder  
+
+
+4. redis缓存  
+    如果使用[缓存切面](./image/redis缓存.png)，调试的时候走的是redis缓存，不会进入类文件中
     
   

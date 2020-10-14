@@ -85,3 +85,10 @@
         ```shell script
         git revert commit_id
         ```
+      
+9. 合并某一个提交到指定的分支  
+    ```shell script
+    git checkout 指定的分支
+   
+    git cherry-pick commit-id //把某个commit-id的提交合并到当前分支
+    ```
