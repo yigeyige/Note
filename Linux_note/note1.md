@@ -4,10 +4,14 @@
 
 1. 解压缩  
     + 压缩  
-        * 示例：将所有jpg打包  
+        * 示例：将所有jpg打gz包  
             ```shell script
             tar -czf *.jpg.tar.gz *.jpg
             ```  
+        * 示例：将所有jpg打tar包  
+            ```shell script
+            tar -cf *.jpg.tar *.jpg
+            ```
     + 解压  
         * 示例1：解压tar包  
             ```shell script
@@ -83,6 +87,7 @@
             卸载软件包并显示卸载的文件信息以及卸载进度  
             ```shell script
             rpm -evh mysql
+            sudo rpm -ev --nodeps perl-Git-1.8.3.1-6.el7_2.1.noarch
             ```    
         * 升级操作 rpm -U  
             升级包  
@@ -131,6 +136,11 @@
         * 查看版本   
             ```shell script
             sudo ./APACHE_BASE/bin/httpd -v
+            ``` 
+    + Git  
+        * 查看版本  
+            ```shell script
+            
             ```
     
 6. top命令  
@@ -210,7 +220,11 @@
     + 查看逻辑CPU个数  
         ```shell script
         cat /proc/cpuinfo| grep "processor"| wc -l
-        ```  
+        ``` 
+    + 查看文件最多的目录
+        ```shell script
+        for i in /*; do echo $i; find $i | wc -l; done
+        ``` 
 9. 普通用户切换到root  
     ```shell script
     su root
@@ -247,4 +261,13 @@
             ```shell script
             service crond status
             ```
+           
+11. 复制命令  
+    + 去除特定文件的复制  
+        ```shell script
+        cd /user/web
+        cp -R 'ls|grep -v *.log | xargs' /tmp/web
+      
+        ls /tmp/test/ |grep -v .gz |xargs -i cp -r /tmp/test/{} /tmp/test_cp
+        ```
         
