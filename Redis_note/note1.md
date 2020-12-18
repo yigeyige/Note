@@ -15,8 +15,7 @@
             ```shell  
             ps -ef|grep redis
             kill -9 PID
-            ```
-    
+            ``` 
     + 2.2 启动  
         + 启动服务端  
             加上`&`号使redis以后台程序方式运行  
@@ -51,18 +50,24 @@
         redis-cli.exe
       
         127.0.0.1:6379> auth redis_password
-        ```
-      
+        ``` 
     + 3.3 卸载  
     
 4. redis命令   
     + 4.1 删除所有数据库的所有key  
         ```shell script
         127.0.0.1:6379> flushall
-        ```
-
+        ``` 
     + 4.2 删除当前数据库的所有key  
         ```shell script
         127.0.0.1:6379> flushdb
-        ```        
+        ```    
+    + 4.3 查找命令  
+        keys [pattern]
+        ```shell script 
+        keys *redis_key_name*
+        ```
+        
+    + 4.4 删除命令  
+          
        

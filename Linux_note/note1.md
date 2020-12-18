@@ -61,6 +61,7 @@
             i 查询安装包的信息
             ```shell script
             rpm -qip mysql.rpm
+            rpm -qa git;rpm -qa perl-Git;date;hostname -I
             ```  
             l 显示安装包文件被安装的到哪些目录下  
             s 显示安装包中的所有文件状态被安装的到哪些目录下   
@@ -129,7 +130,11 @@
     + 3.5 重新加载系统配置文件  
         ```shell script
         source /etc/profile
-        ```                
+        ```     
+    + 3.6 修改密码  
+        ```shell script
+        passwd
+        ```           
     
 5. 软件应用命令  
     + Apache  
@@ -196,15 +201,28 @@
             ```shell script
             netstat -nat|grep ESTABLISHED|wc -l
             ```
+        * 查看端口  
+            * 查看所有3306端口使用情况  
+                ```shell script
+                netstat -an | grep 3306
+                ```
+            * 查看端口对应进程  
+                ```shell script
+                netstat -tunlp | grep 8080
+                ``` 
+            * 查看所有80端口使用情况  
+                ```shell script
+                netstat -nlp |grep 80
+                ```  
+            * 查看当前所有监听端口  
+                ```shell script
+                netstat -nlp |grep LISTEN
+                ```
     + 查看进程所在目录  
         ```shell script
         cd /proc/PID号
         sudo ls -ail
-        ```    
-    + 查看端口对应进程  
-        ```shell script
-        netstat -tunlp | grep 8080
-        ```  
+        ```     
     + 查看进程pid对应服务目录  
         ```shell script
         pwdx 7226
@@ -224,7 +242,13 @@
     + 查看文件最多的目录
         ```shell script
         for i in /*; do echo $i; find $i | wc -l; done
-        ``` 
+        ```   
+    + 查看逻辑卷组信息  
+        ```shell script
+        sudo vgs
+        sudo lvs
+        sudo pvs
+        ```
 9. 普通用户切换到root  
     ```shell script
     su root
@@ -271,3 +295,15 @@
         ls /tmp/test/ |grep -v .gz |xargs -i cp -r /tmp/test/{} /tmp/test_cp
         ```
         
+12. 网络命令  
+    + 端口查看以及监听  
+        ```shell script  
+        netstat -nlp |grep LISTEN   //查看当前所有监听端口
+        netstat -an | grep 6379
+        ```  
+      
+13. java日志分析命令  
+    ```shell script
+    /app/soft/jdk1.8.0_211/bin/jstack -l 15429  | tee -a /tmp/15429_jstack.log
+    /app/soft/jdk1.8.0_211/bin/jmap -dump:live,format=b,file=/tmp/15429.hprof 15429
+    ```

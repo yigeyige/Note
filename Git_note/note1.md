@@ -84,6 +84,7 @@
     + 撤销指定的提交   
         ```shell script
         git revert commit_id
+        :qa
         ```
       
 9. 合并某一个提交到指定的分支  
