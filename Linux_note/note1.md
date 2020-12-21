@@ -307,3 +307,11 @@
     /app/soft/jdk1.8.0_211/bin/jstack -l 15429  | tee -a /tmp/15429_jstack.log
     /app/soft/jdk1.8.0_211/bin/jmap -dump:live,format=b,file=/tmp/15429.hprof 15429
     ```
+    
+14. 查看jar/zip中的文件  
+    [Linux查看jar包中的文件](./File/Linux查看jar中的文件.png)  
+    [Linux查看jar包中的文件](https://blog.csdn.net/weixin_41344042/article/details/80278433?utm_source=blogxgwz1)
+    ```shell script
+    vim axis-1.0.jar
+    /server-config.wsdd
+    ```
