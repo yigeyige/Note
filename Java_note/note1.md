@@ -49,4 +49,8 @@
 5. JVM加载配置文件  
     Linux下加载配置文件是随机的。
     
-  
+6. 导出分析文件
+    ```shell script
+    /app/soft/jdk1.8.0_211/bin/jstack -l 15429  | tee -a /tmp/15429_jstack.log
+    /app/soft/jdk1.8.0_211/bin/jmap -dump:live,format=b,file=/tmp/15429.hprof 15429
+    ```

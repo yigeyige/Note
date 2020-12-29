@@ -134,7 +134,11 @@
     + 3.6 修改密码  
         ```shell script
         passwd
-        ```           
+        ```   
+    + 3.7 查看文件打开数
+        ```shell script
+        ulimit -a
+        ```        
     
 5. 软件应用命令  
     + Apache  
