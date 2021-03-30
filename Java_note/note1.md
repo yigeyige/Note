@@ -30,16 +30,23 @@
     * Struts2  
     
     * Spring  
-2.  Java 参数 null传递  
-    基本类型  
-    基本类型的包装类  
-    Java的数据类型分为两种：
-    1、基本类型：byte(8),short(16),int(32),long(64),float(32),double(64),char(16),boolean(1)
-    2、对象类型：Byte,Short,Integer,Long,Float,Double,Character,Boolean    
-    [Java 参数传递 空对象 null](https://blog.csdn.net/mantoureganmian/article/details/49685309)  
-    当参数为基本类型时，值传递一个null时，参数强制转换类型就会报空指针异常。  
-    [参数传递](./image/参数传递.png)  
-
+2.  Java 参数 
+    + null传递    
+        基本类型  
+        基本类型的包装类  
+        Java的数据类型分为两种：
+        1、基本类型：byte(8),short(16),int(32),long(64),float(32),double(64),char(16),boolean(1)
+        2、对象类型：Byte,Short,Integer,Long,Float,Double,Character,Boolean    
+        [Java 参数传递 空对象 null](https://blog.csdn.net/mantoureganmian/article/details/49685309)  
+        当参数为基本类型时，值传递一个null时，参数强制转换类型就会报空指针异常。  
+        [参数传递](./image/参数传递.png)  
+    + 参数  
+        1）.当使用基本数据类型作为方法的形参时，在方法体中对形参的修改不会影响到实参的数值
+        2）.当使用引用数据类型作为方法的形参时，若在方法体中修改形参指向的数据内容，则会
+        * 对实参变量的数值产生影响，因为形参变量和实参变量共享同一块堆区；*
+        3）.当使用引用数据类型作为方法的形参时，若在方法体中修改形参变量的指向，此时不会
+        * 对实参变量的数值产生影响，因此形参变量和实参变量分别指向不同的堆区；*
+    
 3. StringBuffer&StringBuilder  
 
 

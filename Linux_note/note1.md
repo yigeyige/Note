@@ -7,6 +7,7 @@
         * 示例：将所有jpg打gz包  
             ```shell script
             tar -czf *.jpg.tar.gz *.jpg
+            tar czf foo.tar.gz --exclude=.git foo
             ```  
         * 示例：将所有jpg打tar包  
             ```shell script
@@ -57,6 +58,7 @@
             a 查询所有已经安装的包  
             ```shell script
             rpm -qa | grep mysql
+            yum list libsmbclient*
             ```   
             i 查询安装包的信息
             ```shell script
@@ -138,7 +140,16 @@
     + 3.7 查看文件打开数
         ```shell script
         ulimit -a
-        ```        
+        ```    
+    + 3.8 hosts配置
+        配置host  
+        ```shell script
+        vim /etc/hosts
+        ```
+        重启host  
+        ```shell script
+        /etc/init.d/network restart
+        ```    
     
 5. 软件应用命令  
     + Apache  
@@ -204,6 +215,7 @@
         * 查看网络已连接数量  
             ```shell script
             netstat -nat|grep ESTABLISHED|wc -l
+            netstat -nat
             ```
         * 查看端口  
             * 查看所有3306端口使用情况  
@@ -222,6 +234,10 @@
                 ```shell script
                 netstat -nlp |grep LISTEN
                 ```
+        * 查看实时网速  
+            ```shell script
+            sar -n DEV 1 100
+            ```
     + 查看进程所在目录  
         ```shell script
         cd /proc/PID号
@@ -319,3 +335,15 @@
     vim axis-1.0.jar
     /server-config.wsdd
     ```
+    
+15. 查找文件  
+    ```shell script
+    find / -name rabbitmq.config
+    ```
+    
+16. 查看服务  
+    + 查看服务进程ID 并关闭   
+        ```shell script
+        ps aux | grep snmp | grep -v grep |awk ‘{print $2}’| xargs kill
+        ```
+    
