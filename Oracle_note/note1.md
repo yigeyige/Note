@@ -71,13 +71,35 @@
     alter user 用户名 identified by newpassword replace oldpassword;
     ```
    
-6. 删除索引  
-    ```sql
-    drop index index_name;
+6. 索引  
+    + 6.1 删除索引  
+        ```sql
+        drop index index_name;
    
-    alter table table_name drop constraint pk_name cascade;
-    ```
+        alter table table_name drop constraint pk_name cascade;
+        ```
+    + 6.2 创建索引  
+        online和非online方式创建索引，效果相同;  
+        online方式创建索引，由于使用了一张临时表，以ROW SHARE锁表，不会阻塞原表DML的语句，  
+        非online方式创建索引，则会以SHARE NOWAIT锁表，阻塞原表DML语句;
+        online方式创建索引，Oracle执行工作复杂，因此比非online方式创建索引用时要久.  
+        ```sql
+        create index reimburse.IDX_CLAIMBASE_PROCESS_STATE on reimburse.T_CLAIM_BASE (PROCESS_STATE) online;
+        ```
     
 7. 索引问题  
-    对于这种列上空较少的（占全表1/17）的列，常见的索引是无效的，因为索引默认不存空。   
-    如果要创建，建议 这么写 create index  index_name on  T (col1, 1) 。  后边加个常量。
+    + 7.1 常量索引  
+        对于这种列上空较少的（占全表1/20）的列，常见的索引是无效的，因为索引默认不存空。   
+        如果要创建，建议 这么写 create index  index_name on  T (col1, 1) 。  后边加个常量。
+    + 7.2 联合索引  
+        常规不推荐建立联合索引。如非要建立联合索引，满足最左匹配原则。
+        select count(distinct account_no) a1,count(distinct claimno) a2 from t_account_processlog
+        如上sql, 比较a1和a2数量大小，以数量最大的列为索引前面列。
+        
+        
+8. 查询修改记录  
+    ```sql
+    select *
+      from reimburse.t_claim_base AS OF TIMESTAMP TO_TIMESTAMP('2021-06-29 16:15:40', 'yyyy-mm-dd hh24:mi:ss')
+     where claim_id = 48133811
+    ```

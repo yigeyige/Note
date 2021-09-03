@@ -93,3 +93,30 @@
    
     git cherry-pick commit-id //把某个commit-id的提交合并到当前分支
     ```
+   
+10. 更换远程地址  
+    ```shell script
+    git remote set-url origin https://www.github.com/yige.git
+    ```
+    
+11. 退回到某次提交  
+    重置git到指定commit  
+    ```shell script
+     git reset --hard HEAD^         #回退到上个版本
+     git reset --hard HEAD~3        #回退到前3次提交之前，以此类推，回退到n次提交之前
+     git reset --hard commit_id     #退到/进到 指定commit的sha码
+     
+     git push origin HEAD --force   #强推到远程
+    ```
+    
+12. 将本地强制覆盖
+    ```shell script
+    git fetch --all && git reset --hard origin/40.2108.91 && git pull
+    ```
+    
+13. 远程不小心删除分支后，以本地重新创建并推送  
+    找到删除分支最后一次commit_id
+    ```shell script
+    git branch recover_branch commit_id
+    git push origin/recover_branch
+    ```

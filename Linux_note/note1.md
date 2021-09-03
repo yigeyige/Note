@@ -7,7 +7,8 @@
         * 示例：将所有jpg打gz包  
             ```shell script
             tar -czf *.jpg.tar.gz *.jpg
-            tar czf foo.tar.gz --exclude=.git foo
+            tar -czf foo.tar.gz --exclude=.git foo
+            tar -czf /tmp/tomcat_bpm_7001.tar.gz --exclude=tomcat_bpm_7001/logs tomcat_bpm_7001
             ```  
         * 示例：将所有jpg打tar包  
             ```shell script
@@ -149,8 +150,42 @@
         重启host  
         ```shell script
         /etc/init.d/network restart
-        ```    
-    
+        ```  
+    + 3.9 sysctl配置（比如TCP配置）   
+        优化配置TCP   
+        ```shell script
+        
+        ```
+        
+        重启系统配置（可不重启系统）  
+        ```shell script
+        /sbin/sysctl -p
+        ```
+    + 3.10 dns配置  
+        ```shell script
+        cat /etc/resolv.conf
+        ```
+    + 3.11 用户环境变量  
+        * 对当前用户有效，且永久 (可能会不生效)    
+            ```shell script
+            vim .bash_profile
+            source .bash_profile
+            ```
+        * root用户下执行(生效)   
+            ```shell script
+            vi ~/.bash_profile
+            source ~/.bash_profile
+            ```
+        * 对所有用户有效，且永久 
+            ```shell script
+            vim /etc/profile
+            source /etc/profile
+            ```
+        * 只对本次shell有效，且临时  
+            ```shell script
+            export HOME=/a/a/a/a
+            ```  
+        
 5. 软件应用命令  
     + Apache  
         * 查看版本   
@@ -183,6 +218,8 @@
         ```shell script
         chown prod title
         chgrp prodGroup title
+      
+        chown appuser:appgrp access_log
         ```
    
 8. 查看命令  
@@ -192,6 +229,7 @@
         df -h
         du -h --max-depth=1 /home/prod/web   
         du -sh /home/prod/web
+        du --max-depth=2 / | sort -rn | head
         ```  
     + 查看服务器打开文件数量以及其他数据  
         ```shell script
@@ -247,7 +285,7 @@
         ```shell script
         pwdx 7226
         ```   
-    + 查看物理CPU个数  
+    + 查看物理CPU个数   | wc -l（即为统计数量）
         ```shell script
         cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l
         ```  
@@ -313,7 +351,10 @@
         cp -R 'ls|grep -v *.log | xargs' /tmp/web
       
         ls /tmp/test/ |grep -v .gz |xargs -i cp -r /tmp/test/{} /tmp/test_cp
+      
+        rsync -av --progress sourcefolder /destinationfolder --exclude thefoldertoexclude
         ```
+        
         
 12. 网络命令  
     + 端口查看以及监听  
@@ -339,11 +380,37 @@
 15. 查找文件  
     ```shell script
     find / -name rabbitmq.config
+    #查找当前目录制定时间内的文件 并打包
+    find ./ -newermt '2021-06-03 10:58' ! -newermt '2021-06-03 11:01' -exec tar -czf aa.tar.gz {} \;
+    find ./ -newermt '2020-07-13 09:38' ! -newermt '2020-07-13 10:32' -exec cp {} /tmp/yige1  \;
     ```
+    + find -exec 命令解释  
+        {}是花括号代表前面find查找出来的文件名，对于某些版本的find,{}对于shell来说有特殊含义，
+        所以在前面加\或者引号对他进行转义,\本身对{\}就进行了转义，实际上\{\}这种用法是不妥的,应该使用用\{},或者用引号引起来。
+    
+    + atime,mtime,ctime就是分别对应的“最近一次访问时间”“最近一次内容修改时间”“最近一次属性修改时间”
+      这里的atime的单位指的是“天”，amin的单位是分钟  
+        ```shell script
+        #表示查找在一天内没有访问过的文件
+        find /app/tomcat_web_7092/logs -mtime +1 -name
+        #表示查找在一天内访问过的文件
+        find /app/tomcat_web_7092/logs -mtime -1 -name
+        ```
+    
+    + 统计当前目录文件数量  
+        * 不包括目录 
+            ```shell script
+            ls -l | grep "^-" | wc -l
+            ```
+        * 包括子目录  
+            ```shell script
+            ls -lR| grep "^-" | wc -l
+            ```
+        
     
 16. 查看服务  
     + 查看服务进程ID 并关闭   
         ```shell script
-        ps aux | grep snmp | grep -v grep |awk ‘{print $2}’| xargs kill
+        ps aux | grep snmp | grep -v grep | awk '{print $2}' | xargs kill
         ```
     
