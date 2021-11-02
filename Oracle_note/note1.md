@@ -97,9 +97,39 @@
         如上sql, 比较a1和a2数量大小，以数量最大的列为索引前面列。
         
         
-8. 查询修改记录  
-    ```sql
-    select *
-      from reimburse.t_claim_base AS OF TIMESTAMP TO_TIMESTAMP('2021-06-29 16:15:40', 'yyyy-mm-dd hh24:mi:ss')
-     where claim_id = 48133811
-    ```
+8. 特殊sql  
+    + 8.1 查询短时内表的修改记录（需要开启快照）  
+        ```sql
+        select *
+          from reimburse.t_claim_base AS OF TIMESTAMP TO_TIMESTAMP('2021-06-29 16:15:40', 'yyyy-mm-dd hh24:mi:ss')
+         where claim_id = 48133811
+        ```  
+    + 8.2 特殊like查询  
+        ```sql
+        select * from dual where 'a%b%' like '%/%%' escape '/'
+        ```
+    + 8.3  查询segment  
+        ```sql
+        select owner,
+               segment_name,
+               segment_type,
+               bytes / 1024 / 1024 as mb
+          from dba_segments
+         where segment_name in ('T_INTEGRATED_MESSAGE',
+                                'T_INTEGRATED_MESSAGE_IDX1',
+                                'T_INTEGRATED_MESSAGE_IDX2',
+                                'T_INTEGRATED_MESSAGE_N1');
+        ```  
+    + 8.4 kill会话  
+        ```sql
+        ALTER SYSTEM DISCONNECT SESSION IMMEDIATE;
+        ```
+    + 8.5 特殊执行  
+        ```sql
+        prompt Importing...
+        set feedback off
+        set define off
+                
+        prompt Done.
+        ```
+      

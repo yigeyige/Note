@@ -64,7 +64,7 @@
             i 查询安装包的信息
             ```shell script
             rpm -qip mysql.rpm
-            rpm -qa git;rpm -qa perl-Git;date;hostname -I
+            rpm -qa git;rpm -qa perl-Git;echo $(date +%F);hostname -I
             ```  
             l 显示安装包文件被安装的到哪些目录下  
             s 显示安装包中的所有文件状态被安装的到哪些目录下   
@@ -154,7 +154,7 @@
     + 3.9 sysctl配置（比如TCP配置）   
         优化配置TCP   
         ```shell script
-        
+        cat /etc/sysctl.conf
         ```
         
         重启系统配置（可不重启系统）  
