@@ -71,7 +71,6 @@
 6. 导出分析文件 
     + jstack/jmap    
         ```shell script
-        /app/soft/jdk1.8.0_211/bin/jstack -l 15429  | tee -a /tmp/15429_jstack.log
         /app/soft/jdk1.8.0_211/bin/jmap -dump:live,format=b,file=/tmp/15429.hprof 15429
         ```
    

@@ -71,7 +71,7 @@
     + 4.4 删除命令  
         + 批量删除  
             ```shell script
-            ./redis-cli -h 10.0.97.221 -p 6379 -a EmsCache2020 keys 'menu_*' | xargs  ./redis-cli -h 10.0.97.221 -p 6379 -a EmsCache2020 del  
+            ./redis-cli -h 10.8.10.250 -p 6379 -a EmsCache2020 keys 'menu_*' | xargs  ./redis-cli -h 10.8.10.250 -p 6379 -a EmsCache2020 del  
             ```
     
     + 4.5 查看过期时间 

@@ -124,12 +124,15 @@
         ```sql
         ALTER SYSTEM DISCONNECT SESSION IMMEDIATE;
         ```
-    + 8.5 特殊执行  
+    + 8.5 特殊执行   
         ```sql
         prompt Importing...
         set feedback off
         set define off
                 
         prompt Done.
+        ```  
+    + 8.6 分析索引  
+        ```sql 
+        analyze table test_table compute statistics for all indexes for all columns;
         ```
-      
