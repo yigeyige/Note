@@ -17,9 +17,10 @@
     + 1.5 拉取仓库信息  
         项目 > Git > Repository > Pull [图片备注](./Image/Pull.png)<br/>
         Pull > Pull Changes [图片备注](./Image/Pull-changes.png)<br/>
-        若出现pull failed，使用拉去命令完成：[图片备注](./Image/Pull--rebase.png)
+        若出现pull failed，使用拉去命令完成：[图片备注](./Image/Pull--rebase.png)<br/>
         ```shell script
         git pull --rebase origin master
         ```
      
     + 1.6 commit  
+        

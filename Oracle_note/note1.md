@@ -136,3 +136,9 @@
         ```sql 
         analyze table test_table compute statistics for all indexes for all columns;
         ```
+      
+9. 授权操作  
+    + 8.1 授权  
+        ```sql
+        grant execute on query_account_backinfo to dbquery;
+        ```
