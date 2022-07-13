@@ -82,7 +82,7 @@
         online和非online方式创建索引，效果相同;  
         online方式创建索引，由于使用了一张临时表，以ROW SHARE锁表，不会阻塞原表DML的语句，  
         非online方式创建索引，则会以SHARE NOWAIT锁表，阻塞原表DML语句;
-        online方式创建索引，Oracle执行工作复杂，因此比非online方式创建索引用时要久.  
+        online方式创建索引，Oracle执行工作复杂，因此比非online方式创建索引用时要久.
         ```sql
         create index reimburse.IDX_CLAIMBASE_PROCESS_STATE on reimburse.T_CLAIM_BASE (PROCESS_STATE) online;
         ```

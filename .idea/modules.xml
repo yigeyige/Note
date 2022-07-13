@@ -2,23 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Apache_note/Apache_note.iml" filepath="$PROJECT_DIR$/Apache_note/Apache_note.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Git_note/Git_note.iml" filepath="$PROJECT_DIR$/Git_note/Git_note.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Idea_note/Idea_note.iml" filepath="$PROJECT_DIR$/Idea_note/Idea_note.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Java_note/Java_note.iml" filepath="$PROJECT_DIR$/Java_note/Java_note.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Linux_note/Linux_note.iml" filepath="$PROJECT_DIR$/Linux_note/Linux_note.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Maven_note/Maven_note.iml" filepath="$PROJECT_DIR$/Maven_note/Maven_note.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MySql_note/MySql_note.iml" filepath="$PROJECT_DIR$/MySql_note/MySql_note.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Mybatis_note/Mybatis_note.iml" filepath="$PROJECT_DIR$/Mybatis_note/Mybatis_note.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Nginx_note/Nginx_note.iml" filepath="$PROJECT_DIR$/Nginx_note/Nginx_note.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Oracle_note/Oracle_note.iml" filepath="$PROJECT_DIR$/Oracle_note/Oracle_note.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Others_note/Others_note.iml" filepath="$PROJECT_DIR$/Others_note/Others_note.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Note.iml" filepath="$PROJECT_DIR$/Note.iml" />
       <module fileurl="file://$PROJECT_DIR$/../../笔记/Note/Project_backup/Project_backup.iml" filepath="$PROJECT_DIR$/../../笔记/Note/Project_backup/Project_backup.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Redis_note/Redis_note.iml" filepath="$PROJECT_DIR$/Redis_note/Redis_note.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Tomcat_note/Tomcat_note.iml" filepath="$PROJECT_DIR$/Tomcat_note/Tomcat_note.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Vmware_note/Vmware_note.iml" filepath="$PROJECT_DIR$/Vmware_note/Vmware_note.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Windows_note/Windows_note.iml" filepath="$PROJECT_DIR$/Windows_note/Windows_note.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Markdown_note/markdown_note.iml" filepath="$PROJECT_DIR$/Markdown_note/markdown_note.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rabbitMQ/rabbitMQ.iml" filepath="$PROJECT_DIR$/rabbitMQ/rabbitMQ.iml" />
     </modules>
   </component>
 </project>
